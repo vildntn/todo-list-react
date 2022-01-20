@@ -189,4 +189,90 @@ h3 {
 .todo-item:hover .title{
     color: var(--clr-grey-5);
 }
+  /*Alert*/
+  .alert {
+    margin-bottom: 1em;
+    height: 1.25rem;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-size: 0.7rem;
+    border-radius: 0.25em;
+    letter-spacing: var(--spacing);
+    text-transform: capitalize;
+  }
+
+  .alert-danger {
+    color: #721c24;
+    background: #f8d7da;
+  }
+  .alert-success {
+    color: #155724;
+    background: #d4edda;
+  }
+
+  /* Buttons */
+
+  .submit-btn {
+    background: var(--clr-primary-8);
+    border-color: transparent;
+    flex: 0 0 5rem;
+    display: grid;
+    align-items: center;
+    padding: 0.25rem;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    cursor: pointer;
+    content: var(--clr-primary-5);
+    transition: var(--transition);
+    font-size: 0.85rem;
+  }
+  .submit-btn:hover {
+    background: var(--clr-primary-5);
+    color: var(--clr-white);
+  }
+  
+  .btn{
+    background: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin: 0 0.15rem;
+    transition: var(--transition);
+  }
+
+  .edit-btn {
+    color: var(--clr-green-light);
+  }
+  .edit-btn:hover {
+    color: var(--clr-green-dark);
+  }
+  .delete-btn {
+    color: var(--clr-red-light);
+  }
+  .delete-btn:hover {
+    color: var(--clr-red-dark);
+  }
+
+  .clear-btn {
+    text-transform: capitalize;
+    width: 10rem;
+    height: 1.5rem;
+    display: grid;
+    align-items: center;
+    background: transparent;
+    border-color: transparent;
+    color: var(--clr-red-light);
+    margin: 0 auto;
+    font-size: 0.85rem;
+    letter-spacing: var(--spacing);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1.25rem;
+  }
+  .clear-btn:hover {
+    color: var(--clr-red-dark);
+  }
   
