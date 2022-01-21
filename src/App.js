@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import List from "./List";
 import './index.css';
+import Alert from "./Alert";
 
 function App() {
   const [name, setName] = useState('')
@@ -28,6 +29,10 @@ if(!name){
 else{
   //add item to todo list 
   //show alert for successfully added the item
+  setAlert({show:true, type:'success', message:''})
+  const newItem={id:new Date().getTime().toString(),title:name}
+  setList([...list,newItem])
+  setName('')
 }
 
 }
@@ -35,6 +40,7 @@ else{
   return <>
   <section className="section-center">
     <form  className="todo-form" onSubmit={handleSubmit}>
+      {<Alert {...alert}/>}
      <h3>Todo List</h3>
       <div className="form-control">
         <input type="text" className="todo" value={name} onChange={(e)=>setName(e.target.value)} placeholder="e.g. watering flowers"/>
