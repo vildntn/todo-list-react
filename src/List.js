@@ -1,10 +1,13 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa'
 
-function List() {
+function List({items}) {
+    
   return <div className='todo-list'>
-      <div className="todo-item">
-          <p className="title"></p>
+      {items.map((item)=>{
+          const {id,title}=item
+     return <div className="todo-item" key={id}>
+          <p className="title">{title}</p>
           <div className="button-container">
               <button className="btn edit-btn">
                   <FaEdit/>
@@ -14,6 +17,7 @@ function List() {
               </button>
           </div>
       </div>
+      })}
   </div>;
 }
 

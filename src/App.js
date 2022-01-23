@@ -22,6 +22,11 @@ e.preventDefault()
 if(!name){
   //when the user does not type anything
   //show alert
+  setAlert({
+    show:true,
+    type:'danger',
+    message:'please enter value'
+  })
 
 }else if(name &&isEditing){
 //user type something but for editing
@@ -37,6 +42,13 @@ else{
 
 }
 
+const removeItem=()=>{
+
+}
+const editItem=()=>{
+  
+}
+
   return <>
   <section className="section-center">
     <form  className="todo-form" onSubmit={handleSubmit}>
@@ -47,7 +59,7 @@ else{
         <button className="submit-btn"></button>
       </div>
     </form>
-    <List/>
+    <List items={list}/>
     <button className="clear-btn">Clear Items</button>
   </section>
   </>;
