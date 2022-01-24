@@ -1,68 +1,76 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import List from "./List";
-import './index.css';
+import "./index.css";
 import Alert from "./Alert";
 
 function App() {
-  const [name, setName] = useState('')
-  const [list, setList] = useState([])
-  const [alert, setAlert] = useState({ 
-    show:false,
-    type:'',
-    message:''
-    })
-  const [isEditing, setIsEditing] = useState(false)
-  const [editId, setEditId] = useState(null)
+  const [name, setName] = useState("");
+  const [list, setList] = useState([]);
+  const [alert, setAlert] = useState({
+    show: false,
+    type: "",
+    message: "",
+  });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
 
   console.log(name);
 
-const handleSubmit=(e)=>{
-e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-if(!name){
-  //when the user does not type anything
-  //show alert
-  setAlert({
-    show:true,
-    type:'danger',
-    message:'please enter value'
-  })
+    if (!name) {
+      //when the user does not type anything
+      //show alert
+      setAlert({
+        show: true,
+        type: "danger",
+        message: "please enter value",
+      });
+    } else if (name && isEditing) {
+      //user type something but for editing
+    } else {
+      //add item to todo list
+      //show alert for successfully added the item
+      setAlert({ show: true, type: "success", message: "" });
+      const newItem = { id: new Date().getTime().toString(), title: name };
+      setList([...list, newItem]);
+      setName("");
+    }
+  };
 
-}else if(name &&isEditing){
-//user type something but for editing
-}
-else{
-  //add item to todo list 
-  //show alert for successfully added the item
-  setAlert({show:true, type:'success', message:''})
-  const newItem={id:new Date().getTime().toString(),title:name}
-  setList([...list,newItem])
-  setName('')
-}
+  const removedItem = (id) => {
+    setAlert({
+      show: true,
+      type: "danger",
+      message: "item removed",
+    });
+    setList(list.filter((item) => item.id !== id));
+  };
+  const editItem = () => {};
 
-}
-
-const removeItem=()=>{
-
-}
-const editItem=()=>{
-  
-}
-
-  return <>
-  <section className="section-center">
-    <form  className="todo-form" onSubmit={handleSubmit}>
-      {<Alert {...alert}/>}
-     <h3>Todo List</h3>
-      <div className="form-control">
-        <input type="text" className="todo" value={name} onChange={(e)=>setName(e.target.value)} placeholder="e.g. watering flowers"/>
-        <button className="submit-btn"></button>
-      </div>
-    </form>
-    <List items={list}/>
-    <button className="clear-btn">Clear Items</button>
-  </section>
-  </>;
+  return (
+    <>
+      <section className="section-center">
+        <form className="todo-form" onSubmit={handleSubmit}>
+          {<Alert {...alert} />}
+          <h3>Todo List</h3>
+          <div className="form-control">
+            <input
+              type="text"
+              className="todo"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="e.g. watering flowers"
+            />
+            <button className="submit-btn">{ isEditing? 'Edit' : 'Submit'}</button>
+          </div>
+        </form>
+        <List items={list} removedItem={removedItem} />
+        <button className="clear-btn">Clear Items</button>
+      </section>
+    </>
+  );
 }
 
 export default App;
