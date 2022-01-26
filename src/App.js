@@ -71,6 +71,26 @@ function App() {
 
   };
 
+  const clearList=()=>{
+    setAlert({
+      show:true,
+      type:'danger',
+      message:'empty list'
+    })
+    setList([])
+  }
+
+useEffect(() => {
+ let timeOut=setTimeout(() => {
+   setAlert({
+     show:false,
+     type:'',
+     message:''
+   })
+ }, 3000);
+ return ()=> clearTimeout(timeOut)
+}, [alert]);
+
 
   return (
     <>
@@ -90,7 +110,7 @@ function App() {
           </div>
         </form>
         <List items={list} removedItem={removedItem} editedItem={editedItem} />
-        <button className="clear-btn" >Clear Items</button>
+        <button className="clear-btn" onClick={clearList}>Clear Items</button>
       </section>
     </>
   );
