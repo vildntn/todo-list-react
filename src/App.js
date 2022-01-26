@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import List from "./List";
 import "./index.css";
 import Alert from "./Alert";
@@ -28,11 +28,26 @@ function App() {
         message: "please enter value",
       });
     } else if (name && isEditing) {
-      //user type something but for editing
+      //user type something but for editing -->for edit button
+      setList(list.map((item)=>{
+        if(item.id===editId){
+          return {...item,title:name}
+        }
+        return item
+      }))
+      setAlert({
+        show:true,
+        type:'success',
+        message:'Item edited'
+      })
+      setName('')
+      setEditId(null)
+      setIsEditing(false)
+      
     } else {
       //add item to todo list
       //show alert for successfully added the item
-      setAlert({ show: true, type: "success", message: "" });
+      setAlert({ show: true, type: "success", message: "Item Added To The List" });
       const newItem = { id: new Date().getTime().toString(), title: name };
       setList([...list, newItem]);
       setName("");
@@ -47,7 +62,15 @@ function App() {
     });
     setList(list.filter((item) => item.id !== id));
   };
-  const editItem = () => {};
+
+  const editedItem = (id) => {
+     const editingItem=list.find((item)=>item.id===id)
+     setIsEditing(true)
+     setEditId(id)
+     setName(editingItem.title)
+
+  };
+
 
   return (
     <>
@@ -66,8 +89,8 @@ function App() {
             <button className="submit-btn">{ isEditing? 'Edit' : 'Submit'}</button>
           </div>
         </form>
-        <List items={list} removedItem={removedItem} />
-        <button className="clear-btn">Clear Items</button>
+        <List items={list} removedItem={removedItem} editedItem={editedItem} />
+        <button className="clear-btn" >Clear Items</button>
       </section>
     </>
   );
