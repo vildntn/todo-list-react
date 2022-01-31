@@ -9,10 +9,10 @@ function List({items,removedItem, editedItem}) {
      return <div className="todo-item" key={id}>
           <p className="title">{title}</p>
           <div className="button-container">
-              <button className="btn edit-btn" onClick={()=>editedItem(id)}>
+              <button className="btn btn-icon edit-btn" onClick={()=>editedItem(id)}>
                   <FaEdit/>
               </button>
-              <button className="btn delete-btn" onClick={()=>removedItem(id)}>
+              <button className="btn btn-icon delete-btn" onClick={()=>removedItem(id)}>
                   <FaTrash/>
               </button>
           </div>

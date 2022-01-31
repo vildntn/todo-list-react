@@ -106,11 +106,11 @@ useEffect(() => {
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. watering flowers"
             />
-            <button className="submit-btn">{ isEditing? 'Edit' : 'Submit'}</button>
+            <button className="btn-hover submit-btn">{ isEditing? 'Edit' : 'Submit'}</button>
           </div>
         </form>
         <List items={list} removedItem={removedItem} editedItem={editedItem} />
-        <button className="clear-btn" onClick={clearList}>Clear Items</button>
+        <button className="btn btn-hover clear-btn" onClick={clearList}>Clear Items</button>
       </section>
     </>
   );
