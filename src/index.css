@@ -62,9 +62,11 @@ Global Styles
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: var(--clr-grey-10);
+    background: linear-gradient(to bottom, #68EACC 0%, #497BE8 100%);
   color: var(--clr-grey-1);
   line-height: 1.5;
+  width: 100%;
+  height: 100vh;
   font-size: 0.875rem;
 }
 
@@ -136,7 +138,7 @@ h3 {
   .section-center{
       background: var(--clr-white);
       border-radius: var(--radius);
-      box-shadow: var(--light-shadow);
+      box-shadow: var(--dark-shadow);
       transition: var(--transition);
       padding: 2em;
   }
@@ -144,6 +146,10 @@ h3 {
   .section-center:hover{
       box-shadow: var(--dark-shadow);
   }
+
+.todo-list{
+  margin: 1.5em 0;
+}
 
   .todo{
     padding: 0.25rem;
@@ -167,6 +173,29 @@ h3 {
   justify-content: center; 
 }
 
+@media screen and (max-width:330px) {
+  .form-control{
+    display: flex;
+    flex-direction: column;
+  }
+  .todo{
+    border-radius: var(--radius);
+    margin-bottom: 1em;
+    flex: none
+  }
+  .submit-btn{
+    border-radius: var(--radius);
+    font-size: 1em;
+    flex: none !important;
+    padding: 1em;
+  }
+  .todo-item:hover{
+    color: var(--clr-grey-1);
+    background: var(--clr-grey-5);
+    
+  }
+}
+
 .todo-container{
   margin-top: 2rem;
 }
@@ -177,17 +206,18 @@ h3 {
     justify-content: space-between;
     margin-bottom: 0.5rem;
     transition: var(--transition);
-    padding: 0.25rem 1rem;
+    padding: 0.45rem 1rem;
     border-radius: var(--radius);
     text-transform: capitalize;
 }
 
 .todo-item:hover{
-    color: var(--clr-grey-5);
-    background: var(--clr-grey-10);
+    color: var(--clr-grey-1);
+    background: var(--clr-grey-5);
+    box-shadow: var(--light-shadow);
 }
 .todo-item:hover .title{
-    color: var(--clr-grey-5);
+    color: var(--clr-grey-1);
 }
   /*Alert*/
   .alert {
@@ -229,14 +259,18 @@ h3 {
     transition: var(--transition);
     font-size: 0.85rem;
   }
-  .submit-btn:hover {
-    background: var(--clr-primary-5);
-    color: var(--clr-white);
-  }
   
   .btn{
     background: transparent;
     border-color: transparent;
+  }
+
+  .btn-hover:hover{
+    background: var(--clr-primary-5);
+    color: var(--clr-white);
+  }
+
+  .btn-icon{
     cursor: pointer;
     font-size: 0.7rem;
     margin: 0 0.15rem;
@@ -259,20 +293,16 @@ h3 {
   .clear-btn {
     text-transform: capitalize;
     width: 10rem;
-    height: 1.5rem;
+    height: 2.5rem;
     display: grid;
     align-items: center;
-    background: transparent;
-    border-color: transparent;
-    color: var(--clr-red-light);
     margin: 0 auto;
     font-size: 0.85rem;
     letter-spacing: var(--spacing);
-    cursor: pointer;
     transition: var(--transition);
     margin-top: 1.25rem;
+    background: var(--clr-primary-8);
+    border-radius: var(--radius);
   }
-  .clear-btn:hover {
-    color: var(--clr-red-dark);
-  }
+ 
   
